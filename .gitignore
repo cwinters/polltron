@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Foreman uses this to store the local environment
+/.env
+
 # IDEA files
 /.idea
 *.iml
