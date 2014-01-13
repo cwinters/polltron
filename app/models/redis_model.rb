@@ -53,6 +53,13 @@ class RedisModel
     end
   end
 
+  def ==(other)
+    self.attributes.each do |prop|
+      return false if self.send(prop) != other.send(prop)
+    end
+    true
+  end
+
   def delete!
     REDIS.del(record_key)
   end
