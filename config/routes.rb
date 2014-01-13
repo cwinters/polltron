@@ -53,4 +53,10 @@ Polltron::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resources :polls do
+    resources :poll_choices do
+
+    end
+  end
 end
