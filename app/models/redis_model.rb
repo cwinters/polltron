@@ -3,7 +3,8 @@ class RedisModel
     record = new(params)
     record.id = REDIS.incr(record.id_key)
     record.store!
-    RESIS.rpush(record.list_key, record.id)
+    REDIS.rpush(record.list_key, record.id)
+    record
   end
 
   def self.fetch_by_id(id)
