@@ -2,10 +2,6 @@ class Poll < RedisModel
   my_attributes :choice_ids, :id, :name
   my_key 'poll'
 
-  def self.list
-
-  end
-
   def add_choice(params)
     params[:poll] = record_key
     choice = PollChoice.create!(params)

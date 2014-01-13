@@ -17,7 +17,7 @@ class RedisModel
   end
 
   def self.fetch_all(keys)
-    REDIS.mget(keys) {|json| new(JSON.parse(json))}.compact
+    REDIS.mget(keys).map {|json| json ? new(JSON.parse(json)) : nil}.compact
   end
 
   def self.list
@@ -43,7 +43,7 @@ class RedisModel
   end
 
   def self.to_keys(*ids)
-    ids.map {|id| new(id: id).record_key}
+    ids.flatten.map {|id| new(id: id).record_key}
   end
 
   def initialize(params = {})

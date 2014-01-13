@@ -9,4 +9,9 @@ class PollTest < ActiveSupport::TestCase
     p = Poll.create!(name: 'Some other poll')
     assert_equal(p, Poll.fetch_by_id(p.id))
   end
+
+  test 'it should create! and be in the list after' do
+    created = Poll.create!(name: 'An awesome poll')
+    assert Poll.list.any? {|poll| poll.id == created.id }
+  end
 end
